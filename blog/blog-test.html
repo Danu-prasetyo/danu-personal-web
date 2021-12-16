@@ -1,0 +1,373 @@
+<html>
+  <head>
+    <title>Creating Blog Page</title>
+    <link rel="stylesheet" href="" />
+    <link rel="icon" href="../img/navlogo.png" alt="logo" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      /* Navbar */
+      nav {
+        display: flex;
+        background: #f4f3f3;
+        height: 60px;
+        top: 0; /*top: 0; berfungsi agar navigasi menempati posisi paling atas.*/
+        position: fixed; /*position: fixed; berfungsi agar navigasi tetap di atas saat di scroll ke bawah.*/
+        width: 100%; /*width: 100%; berfungsi agar menu navigasinya memiliki lebar sepenuh di layar aplikasi browser.*/
+        z-index: 1; /*z-index: 1; berfungsi seperti layer di Photoshop, biar layer navigasi menempati posisi lapisan paling atas.*/
+        box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.25);
+      }
+
+      nav .left-side img {
+        height: 75px;
+      }
+
+      nav div {
+        display: flex;
+        align-items: center;
+        flex: 50%;
+      }
+
+      nav div.left-side {
+        padding-left: 90px;
+      }
+
+      nav div.right-side {
+        padding-right: 90px;
+        display: flex;
+        justify-content: flex-end;
+      }
+
+      nav ul {
+        list-style-type: none;
+        margin-left: 40px;
+      }
+
+      nav ul li {
+        display: inline;
+        margin-left: 40px;
+      }
+
+      nav ul li a {
+        color: #000000;
+        text-decoration: none;
+      }
+
+      nav ul li a.list-active {
+        color: #009ba0;
+        font-weight: 700;
+      }
+
+      /* a */
+      nav .right-side a {
+        font-size: 15px;
+        padding: 8px 20px;
+        background-color: #009ba0;
+        border: none;
+        border-radius: 10px;
+        color: #fff;
+        text-decoration: none;
+      }
+      nav .right-side a[type="button"]:hover {
+        background-color: #007b80;
+      }
+
+      /*button*/
+      nav .right-side button[type="button"] {
+        width: 20%;
+        font-size: 15px;
+        background-color: #009ba0;
+        color: white;
+        padding: 8px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        text-decoration: none;
+      }
+      nav .right-side button[type="button"]:hover {
+        background-color: #007b80;
+      }
+
+      /* Create two unequal columns that floats next to each other */
+      /* Right column */
+      .blog-form {
+        margin-top: 50px;
+        float: left;
+        width: 25%;
+        padding: 10px;
+      }
+
+      .blog-form .form-container {
+        background-color: #f1f1f1;
+        padding: 20px;
+        margin-top: 20px;
+        border: 1px solid #c4c4c4;
+        border-radius: 8px;
+      }
+
+      .blog-form form input,
+      textarea,
+      select {
+        width: 100%;
+        font-size: 20px;
+        font-weight: 400;
+        padding: 8px;
+        margin-top: 5px;
+        margin-bottom: 20px;
+        background: #ffffff;
+        border: 1px solid #c4c4c4;
+        border-radius: 8px;
+      }
+
+      .blog-form form textarea {
+        height: 150px;
+      }
+
+      .blog-form form .input-blog-image-group {
+        width: 100%;
+        font-size: 20px;
+        font-weight: 400;
+        padding: 8px;
+        margin-top: 5px;
+        margin-bottom: 20px;
+        background: #ffffff;
+        border: 1px solid #c4c4c4;
+        border-radius: 8px;
+        cursor: pointer;
+      }
+
+      .blog-form form .input-blog-image-group label p {
+        font-size: 15px;
+      }
+
+      .blog-form form .input-blog-image-group label {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .blog-form form .button-group {
+        text-align: right;
+      }
+
+      .blog-form form button {
+        margin-top: 20px;
+        padding: 8px 20px;
+        font-size: 17px;
+        background: #009ba0;
+        border-radius: 8px;
+        border: none;
+        color: rgb(255, 255, 255);
+        cursor: pointer;
+      }
+      .blog-form form button[type="submit"]:hover {
+        background-color: #007b80;
+      }
+
+      /* Fake image */
+      .fakeimg {
+        background-color: #aaa;
+        width: 100%;
+        padding: 20px;
+      }
+
+      /* Add a card effect for articles */
+      /* Left column */
+      .blog-list {
+        float: left;
+        width: 75%;
+        padding: 10px;
+        margin-top: 50px;
+      }
+
+      .blog-list .blog-list-item {
+        padding: 15px;
+        margin-top: 20px;
+        border: 1px solid #c4c4c4;
+        border-radius: 8px;
+        display: flex;
+      }
+
+      .blog .blog-list .blog-image {
+        flex: 1;
+      }
+
+      .blog .blog-list .blog-image img {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+        border-radius: 8px;
+      }
+
+      .blog .blog-list .blog-content {
+        padding-left: 20px;
+        flex: 2;
+      }
+
+      .blog .blog-list .btn-group {
+        text-align: right;
+        margin-bottom: 20px;
+      }
+
+      .blog .blog-list .btn-group .btn-edit {
+        padding: 5px 10px;
+        border: 0;
+        border-radius: 4px;
+        background: #dbdbdb;
+      }
+
+      .blog .blog-list .btn-group .btn-post {
+        padding: 5px 10px;
+        border: 0;
+        border-radius: 4px;
+        background: #009ba0;
+        color: #fff;
+      }
+
+      .blog .blog-list h1 a {
+        text-decoration: none;
+        color: #000000;
+      }
+
+      .blog .blog-list .detail-blog-content {
+        font-weight: 300;
+        font-size: 12px;
+        line-height: 20px;
+      }
+
+      .blog .blog-list .blog-list-item p {
+        margin-top: 20px;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 20px;
+        text-align: justify;
+      }
+
+      /* Clear floats after the columns */
+      .blog:after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+
+      body {
+        position: relative;
+      }
+
+      /* Footer */
+      .footer {
+        width: 100%;
+        height: 40px;
+        padding: 10px;
+        text-align: center;
+        background: #ddd;
+        position: absolute;
+        bottom: 0px;
+      }
+
+      /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
+      @media screen and (max-width: 800px) {
+        .blog-list,
+        .rightcolumn {
+          width: 100%;
+          padding: 0;
+        }
+      }
+
+      /* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
+      @media screen and (max-width: 400px) {
+        .topnav a {
+          float: none;
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- NavBar -->
+    <nav>
+      <div class="left-side">
+        <a href="../index.html">
+          <img src="../img/navlogo.png" alt="logo" />
+        </a>
+        <ul>
+          <li>
+            <a href="../index.html" class="list-active">Home</a>
+          </li>
+          <li>
+            <a href="blog.html">Blog</a>
+          </li>
+        </ul>
+      </div>
+      <div class="right-side">
+        <a href="../contact-form.html" type="button"> Contact Me </a>
+      </div>
+    </nav>
+
+    <!-- Blog -->
+    <!-- Form -->
+    <div class="blog">
+      <div id="contents" class="blog-list">
+        <div class="blog-list-item">
+          <div class="blog-image">
+            <img src="assets/blog-img.png" alt="" />
+          </div>
+          <div class="blog-content">
+            <div class="btn-group">
+              <button class="btn-edit">Edit Post</button>
+              <button class="btn-post">Post Blog</button>
+            </div>
+            <h1>
+              <a href="blog-detail.html" target="_blank">Pasar Coding di Indonesia Dinilai Masih Menjanjikan</a>
+            </h1>
+            <div class="detail-blog-content">12 Jul 2021 22:30 WIB | Ichsan Emrald Alamsyah</div>
+            <p>
+              Ketimpangan sumber daya manusia (SDM) di sektor digital masih menjadi isu yang belum terpecahkan. Berdasarkan penelitian ManpowerGroup, ketimpangan SDM global, termasuk Indonesia,
+              meningkat dua kali lipat dalam satu dekade terakhir. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quam, molestiae numquam! Deleniti maiores expedita eaque deserunt quaerat!
+              Dicta, eligendi debitis?
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="blog-form">
+        <div class="form-container">
+          <form onsubmit="addBlog(event)">
+            <h1>Create Post</h1>
+            <div>
+              <label for="input-blog-title">Title</label>
+              <input id="input-blog-title" />
+            </div>
+            <div>
+              <label for="input-blog-content">Content</label>
+              <textarea id="input-blog-content"></textarea>
+            </div>
+            <div>
+              <label>Upload Image</label>
+              <div class="input-blog-image-group">
+                <label for="input-blog-image">
+                  <p>Attach File</p>
+                  <img src="assets/file.png" alt="file" />
+                </label>
+                <input type="file" id="input-blog-image" hidden />
+              </div>
+            </div>
+            <div class="button-group">
+              <button type="submit">Post Blog</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <footer class="footer">Copyright @2021 | Danu Prasetyo</footer>
+    <script src="blog.js"></script>
+  </body>
+</html>
