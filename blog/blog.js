@@ -4,7 +4,7 @@ render array to html </>*/
 let blogs = [];
 
 function addBlog(event) {
-  event.preventDefault();
+  event.preventDefault(); //event biar webnya ga reload atau motong proses JS yg lain pas ngesubmit
 
   let title = document.getElementById("input-blog-title").value;
   let content = document.getElementById("input-blog-content").value;
