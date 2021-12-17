@@ -1,6 +1,7 @@
 /*store blog data to object {...}
 store object to arrays [...]
 render array to html </>*/
+//array
 let blogs = [];
 
 function addBlog(event) {
@@ -12,6 +13,7 @@ function addBlog(event) {
 
   image = URL.createObjectURL(image.files[0]);
 
+  //object
   let blog = {
     title: title,
     content: content,
@@ -19,13 +21,13 @@ function addBlog(event) {
     author: "Danu Prasetyo",
     postAt: new Date(),
   };
-
+  //push=memasukkan objek blog ke dlm array si blogs
   blogs.push(blog);
 
   //looping
   //for (let i = 0; i < 10; i++) {}
 
-  console.log(blog);
+  console.log(blogs);
 
   renderBlog();
 }
