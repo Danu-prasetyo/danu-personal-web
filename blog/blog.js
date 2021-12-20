@@ -67,7 +67,7 @@ function renderBlog() {
   }
 }
 
-//menampilkan kapan waktu data tersebut di upload/post
+//menampilkan kapan waktu data tersebut di upload/postegerg
 let month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 function getFullTime(time) {
   let date = time.getDate(); //tanggal = getDate()
