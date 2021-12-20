@@ -119,9 +119,9 @@ function getDistanceTime(time) {
     }
   }
 }
-getDistanceTime();
+//getDistanceTime(time);
 
-//fungsi setInnterval = dy akan mengeksekusi program terus menerus tiap waktu
+//fungsi setInnterval = dy akan mengeksekusi kode sesusai waktu yg kita berikan()
 setInterval(() => {
   renderBlog();
 }, 1000);
